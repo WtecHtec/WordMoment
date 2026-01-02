@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <title>word-moment</title> -->
+
+  <!-- ========================= -->
+  <!-- 基础 SEO -->
+  <!-- ========================= -->
+
+  <title>词刻 WordMoment｜通过输入与重复强化高效背单词</title>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="词刻 WordMoment 是一个纯前端、无广告的背单词网站，通过键盘输入与累积式重复强化，帮助你高效记住英语单词，适合 CET4 / CET6 等英语词汇记忆。" />
+
+  <meta name="keywords"
+    content="背单词,记单词,英语背单词,英语记单词,背英语单词,英语单词记忆,英语词汇记忆,英语单词练习,英语词汇训练,CET4背单词,四级背单词,CET6背单词,输入式背单词,主动回忆背单词,高效背单词方法,没有广告的背单词网站,纯前端背单词工具" />
+
+  <meta name="author" content="WordMoment" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ========================= -->
+  <!-- Canonical -->
+  <!-- ========================= -->
+
+  <link rel="canonical" href="https://wordmoment.app/" />
+
+  <!-- ========================= -->
+  <!-- Open Graph -->
+  <!-- ========================= -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="词刻 WordMoment" />
+
+  <meta property="og:title" content="词刻 WordMoment｜通过输入与重复强化高效背单词" />
+
+  <meta property="og:description" content="一个通过键盘输入与系统化重复强化，帮助你真正记住英语单词的背单词工具。" />
+
+  <meta property="og:url" content="https://wordmoment.app/" />
+  <meta property="og:image" content="https://wordmoment.app/og-image.png" />
+
+  <!-- ========================= -->
+  <!-- Twitter Card -->
+  <!-- ========================= -->
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="twitter:title" content="词刻 WordMoment｜输入式英语背单词工具" />
+
+  <meta name="twitter:description" content="通过主动输入和累积强化，把英语单词真正刻进记忆。" />
+
+  <meta name="twitter:image" content="https://wordmoment.app/og-image.png" />
+
+  <!-- ========================= -->
+  <!-- PWA / 移动端 -->
+  <!-- ========================= -->
+
+  <meta name="theme-color" content="#111111" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- ========================= -->
+  <!-- 结构化数据 Schema -->
+  <!-- ========================= -->
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "词刻 WordMoment",
+  "url": "https://wordmoment.app/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "All",
+  "description": "一个通过键盘输入与累积式重复强化，帮助用户高效背单词和记忆英语词汇的纯前端学习工具。",
+  "inLanguage": "zh-CN",
+  "browserRequirements": "Requires JavaScript"
+}
+</script>
+  <style>
+    .seo-content {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 720px;
+      margin: 120px auto 0;
+      padding: 0 16px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666;
+      z-index: -1;
+    }
+
+    .seo-content h2 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="seo-content" aria-label="英语背单词工具介绍">
+    <h2>一个通过输入来背单词的英语记忆工具</h2>
+
+    <p>
+      词刻（WordMoment）是一个专注于<strong>背单词</strong>和<strong>英语词汇记忆</strong>的在线工具，
+      通过键盘输入和重复强化的方式，帮助学习者真正记住英语单词。
+      与传统的单词卡片或机械重复不同，词刻强调<strong>主动回忆</strong>，
+      每一个新单词都需要用户亲自输入，从而加深记忆痕迹。
+    </p>
+
+    <p>
+      在学习过程中，每当你完成一个新单词的输入，系统都会从第一个单词开始，
+      依次播放已学单词的强化展示，让单词在短时间内反复出现，
+      适合<strong>CET4 背单词</strong>、<strong>CET6 背单词</strong>以及日常英语词汇积累。
+    </p>
+
+    <p>
+      词刻不提供广告、不做社交、不追求刷题速度，
+      只专注于帮助你用更少的单词量，获得更牢固的记忆效果。
+      如果你正在寻找一个<strong>高效、干净、长期可用的背单词网站</strong>，
+      词刻将是一个值得尝试的选择。
+    </p>
+  </section>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <script>
+
+    setTimeout(() => {
+      const isLocked = localStorage.getItem('is_locked') === 'true';
+      if (isLocked) {
+        console.log("Google Ads not loaded - App is locked");
+        return;
+      }
+      // 加载第一个 Ads 脚本
+      const ad1 = document.createElement("script");
+      ad1.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2463152068592975";
+      ad1.async = true;
+      ad1.crossOrigin = "anonymous";
+      document.head.appendChild(ad1);
+
+      // 加载第二个 Ads 脚本
+      const ad2 = document.createElement("script");
+      ad2.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456";
+      ad2.async = true;
+      ad2.crossOrigin = "anonymous";
+      document.head.appendChild(ad2);
+
+      console.log("Google Ads loaded after 1 minute");
+    }, 10 * 1000);
+
+  </script>
+</body>
+
+</html>
