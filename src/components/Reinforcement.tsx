@@ -14,10 +14,8 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
     const [waitingForSpace, setWaitingForSpace] = useState(false);
 
     // Animation States
-    const [wordScale, setWordScale] = useState(1);
     const [showMeaning, setShowMeaning] = useState(false);
     const [meaningPos, setMeaningPos] = useState({ top: '50%', left: '50%' });
-    const [isShaking, setIsShaking] = useState(false);
     const [meaningColor, setMeaningColor] = useState('#f8fafc'); // Default text color
 
     const colors = [
@@ -39,10 +37,8 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
         setDisplayedText('');
         setIsTypingDone(false);
         setWaitingForSpace(false);
-        setWordScale(1);
         setShowMeaning(false);
         setMeaningPos({ top: '60%', left: '50%' }); // Initial position below word
-        setIsShaking(false);
         setMeaningColor('#f8fafc');
 
         let charIndex = 0;
@@ -83,52 +79,25 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
     }, [waitingForSpace]);
 
     const startSmashSequence = () => {
-        let count = 0;
-        const maxSmashes = 3;
+        // 1. Show Meaning immediately
+        // Always center the meaning horizontally, but move it down to avoid overlap
+        setMeaningPos({ top: '65%', left: '50%' });
 
-        const smashLoop = () => {
-            if (count >= maxSmashes) {
-                // Finish
-                setTimeout(onComplete, 1000);
-                return;
-            }
+        // Random Color
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        setMeaningColor(randomColor);
 
-            // 1. Trigger Smash
-            count++;
-            setWordScale(prev => Math.max(0.4, prev - 0.2)); // Shrink word
+        setShowMeaning(true);
 
-            // Always center the meaning horizontally, but move it down to avoid overlap
-            setMeaningPos({ top: '65%', left: '50%' });
-
-            // Random Color
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            setMeaningColor(randomColor);
-
-            setShowMeaning(true);
-            setIsShaking(true);
-
-            // 2. Reset Shake after brief moment
-            setTimeout(() => setIsShaking(false), 500);
-
-            // 3. Hide Meaning and loop
-            setTimeout(() => {
-                setShowMeaning(false);
-                setTimeout(smashLoop, 300); // Wait before next smash
-            }, 1500); // Duration of meaning display
-        };
-
-        smashLoop();
+        // 2. Wait for animation (e.g., 3 seconds for a few breaths) then complete
+        setTimeout(onComplete, 3000);
     };
 
     return (
-        <div className={`reinforcement-container relative ${isShaking ? 'shake-screen' : ''}`}>
+        <div className="reinforcement-container relative">
             {/* English Word */}
             <div
                 className={`word-display ${isTypingDone ? 'done' : 'typing'}`}
-                style={{
-                    transform: `translate(-50%, -50%) scale(${wordScale})`,
-                    transition: 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-                }}
             >
                 {displayedText}
                 {!isTypingDone && <span className="typing-cursor">|</span>}
@@ -158,7 +127,6 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
                         className="meaning-display smash"
                         style={{
                             position: 'static',
-                            transform: 'none',
                             color: meaningColor
                         }}
                     >

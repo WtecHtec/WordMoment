@@ -405,25 +405,37 @@ input {
 }
 
 /* Smash Animation (Big to Small + Fade In) */
-@keyframes smashIn {
+/* Smash Animation (Appear + Breath) */
+@keyframes appear {
   0% {
     opacity: 0;
-    transform: scale(3);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(4px);
   }
 
   100% {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    opacity: 1;
     transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
   }
 }
 
 .meaning-display.smash {
-  animation: smashIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation:
+    appear 0.5s ease-out forwards,
+    breathe 2s ease-in-out infinite 0.5s;
 }
 
 /* Complete Component */
