@@ -29,6 +29,8 @@ export const Typing: React.FC<TypingProps> = ({ word, inputVal, onInput, onSubmi
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
+            if (e.nativeEvent.isComposing) return;
+
             const success = onSubmit();
             if (!success) {
                 setIsError(true);

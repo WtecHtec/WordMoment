@@ -59,6 +59,7 @@ export const Learn: React.FC<LearnProps> = ({ unitData, onExit }) => {
             <div className="learn-content">
                 {phase === 'typing' && (
                     <Typing
+                        key={currentWord.en}
                         word={currentWord}
                         inputVal={inputVal}
                         onInput={handleInput}
@@ -68,6 +69,7 @@ export const Learn: React.FC<LearnProps> = ({ unitData, onExit }) => {
 
                 {phase === 'reinforcement' && currentReinforcementWord && (
                     <Reinforcement
+                        key={currentReinforcementWord.en}
                         word={currentReinforcementWord}
                         onComplete={advanceReinforcement}
                     />
