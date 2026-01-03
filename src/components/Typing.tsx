@@ -44,7 +44,19 @@ export const Typing: React.FC<TypingProps> = ({ word, inputVal, onInput, onSubmi
         <div className="typing-container">
             {/* English Word Display */}
             <div className="typing-word-display">
-                {word.en}
+                {word.block ? (
+                    word.block.map((part, index) => {
+                        const blockColors = ['#38bdf8', '#f472b6', '#4ade80', '#fbbf24'];
+                        const color = blockColors[index % blockColors.length];
+                        return (
+                            <span key={index} style={{ color }}>
+                                {part}
+                            </span>
+                        );
+                    })
+                ) : (
+                    word.en
+                )}
             </div>
 
             {/* Phonetic & Meaning */}

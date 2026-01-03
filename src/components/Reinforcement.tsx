@@ -99,7 +99,36 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
             <div
                 className={`word-display ${isTypingDone ? 'done' : 'typing'}`}
             >
-                {displayedText}
+                {word.block ? (
+                    // Logic for block-based coloring
+                    (() => {
+                        let currentLength = 0;
+                        return word.block.map((part, index) => {
+                            const partStart = currentLength;
+                            const partEnd = currentLength + part.length;
+                            currentLength += part.length;
+
+                            // Calculate how much of this part is currently displayed
+                            const displayEnd = displayedText.length;
+
+                            if (displayEnd <= partStart) return null; // Not reached yet
+
+                            const visiblePart = part.slice(0, Math.max(0, displayEnd - partStart));
+
+                            // Define colors for blocks (alternating or specific palette)
+                            const blockColors = ['#38bdf8', '#f472b6', '#4ade80', '#fbbf24'];
+                            const color = blockColors[index % blockColors.length];
+
+                            return (
+                                <span key={index} style={{ color: isTypingDone ? color : undefined }}>
+                                    {visiblePart}
+                                </span>
+                            );
+                        });
+                    })()
+                ) : (
+                    displayedText
+                )}
                 {!isTypingDone && <span className="typing-cursor">|</span>}
             </div>
 

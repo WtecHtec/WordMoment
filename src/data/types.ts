@@ -2,6 +2,7 @@ export interface Word {
     en: string;
     zh: string;
     phonetic?: string;
+    block?: string[];
 }
 
 export interface UnitData {
