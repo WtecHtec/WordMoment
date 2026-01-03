@@ -105,7 +105,7 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
                         let currentLength = 0;
                         return word.block.map((part, index) => {
                             const partStart = currentLength;
-                            const partEnd = currentLength + part.length;
+                            // const partEnd = currentLength + part.length;
                             currentLength += part.length;
 
                             // Calculate how much of this part is currently displayed
