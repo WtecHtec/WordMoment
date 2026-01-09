@@ -113,12 +113,24 @@ input {
   min-height: 100%;
   width: 100%;
   gap: 3rem;
-  padding: 4rem 0;
+  padding: 0 0 4rem 0;
   animation: fadeIn var(--transition-medium) forwards;
 }
 
 .title-section {
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem 0;
+  background-color: rgba(15, 23, 42, 0.85);
+  /* Slightly increased opacity */
+  backdrop-filter: blur(12px);
+  /* Increased blur */
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 2rem;
+  width: 100%;
+  /* Fix: Ensure full width to cover scrolling content */
 }
 
 .app-title {

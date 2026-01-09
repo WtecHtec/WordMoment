@@ -64,19 +64,41 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
         return () => clearInterval(typeInterval);
     }, [word, play]);
 
-    // Handle Spacebar press
+    // Handle Spacebar or Click
+    const handleInteraction = React.useCallback(() => {
+        if (waitingForSpace) {
+            setWaitingForSpace(false);
+            startSmashSequence();
+        }
+    }, [waitingForSpace]);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (waitingForSpace && e.code === 'Space') {
                 e.preventDefault();
-                setWaitingForSpace(false);
-                startSmashSequence();
+                handleInteraction();
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [waitingForSpace]);
+    }, [waitingForSpace, handleInteraction]);
+
+    // Handle click anywhere
+    useEffect(() => {
+        if (waitingForSpace) {
+            const handleClick = (e: MouseEvent | TouchEvent) => {
+                e.preventDefault();
+                handleInteraction();
+            }
+            window.addEventListener('click', handleClick);
+            window.addEventListener('touchstart', handleClick);
+            return () => {
+                window.removeEventListener('click', handleClick);
+                window.removeEventListener('touchstart', handleClick);
+            };
+        }
+    }, [waitingForSpace, handleInteraction]);
 
     const startSmashSequence = () => {
         // 1. Show Meaning immediately
@@ -135,7 +157,7 @@ export const Reinforcement: React.FC<ReinforcementProps> = ({ word, onComplete }
             {/* Space Prompt */}
             {waitingForSpace && (
                 <div className="absolute bottom-20 text-slate-400 text-sm animate-pulse">
-                    Press <span className="font-bold text-sky-400 border border-sky-400/30 px-2 py-1 rounded mx-1">Space</span> to continue
+                    Press <span className="font-bold text-sky-400 border border-sky-400/30 px-2 py-1 rounded mx-1">Space</span> or <span className="font-bold text-sky-400 border border-sky-400/30 px-2 py-1 rounded mx-1">Tap Screen</span> to continue
                 </div>
             )}
 
