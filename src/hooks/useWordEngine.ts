@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { Word, UnitData } from '../data/types';
 
-export type Phase = 'typing' | 'reinforcement' | 'complete';
+export type Phase = 'typing' | 'reinforcement' | 'complete' | 'review';
 
 interface UseWordEngineProps {
     unitData: UnitData;
@@ -16,6 +16,10 @@ export const useWordEngine = ({ unitData }: UseWordEngineProps) => {
     // Reinforcement state
     const [queue, setQueue] = useState<Word[]>([]);
     const [currentReinforcementIndex, setCurrentReinforcementIndex] = useState(0);
+
+    // Review state
+    const [reviewQueue, setReviewQueue] = useState<Word[]>([]);
+    const [reviewIndex, setReviewIndex] = useState(0);
 
     const currentWord = unitData.words[currentIndex];
 
@@ -64,6 +68,28 @@ export const useWordEngine = ({ unitData }: UseWordEngineProps) => {
         }
     }, [phase, currentReinforcementIndex, queue.length, currentIndex, unitData.words.length]);
 
+    const startReview = useCallback(() => {
+        // Shuffle words
+        const shuffled = [...unitData.words];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        setReviewQueue(shuffled);
+        setReviewIndex(0);
+        setPhase('review');
+    }, [unitData.words]);
+
+    const advanceReview = useCallback(() => {
+        if (phase !== 'review') return;
+
+        if (reviewIndex < reviewQueue.length - 1) {
+            setReviewIndex(prev => prev + 1);
+        } else {
+            setPhase('complete');
+        }
+    }, [phase, reviewIndex, reviewQueue.length]);
+
     // Load progress from localStorage on mount
     useEffect(() => {
         const saved = localStorage.getItem('wordmoment_progress');
@@ -94,7 +120,7 @@ export const useWordEngine = ({ unitData }: UseWordEngineProps) => {
                 [unitData.level]: {
                     [unitData.unit]: {
                         currentIndex,
-                        finished: phase === 'complete'
+                        finished: phase === 'complete' || phase === 'review'
                     }
                 }
             };
@@ -111,7 +137,7 @@ export const useWordEngine = ({ unitData }: UseWordEngineProps) => {
                             ...parsed[unitData.level],
                             [unitData.unit]: {
                                 currentIndex,
-                                finished: phase === 'complete'
+                                finished: phase === 'complete' || phase === 'review'
                             }
                         }
                     };
@@ -166,6 +192,9 @@ export const useWordEngine = ({ unitData }: UseWordEngineProps) => {
         advanceReinforcement,
         totalWords: unitData.words.length,
         progress: currentIndex + 1,
-        resetProgress
+        resetProgress,
+        startReview,
+        advanceReview,
+        currentReviewWord: reviewQueue[reviewIndex]
     };
 };

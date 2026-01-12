@@ -4,9 +4,10 @@ import confetti from 'canvas-confetti';
 interface CompleteProps {
     onRestart: () => void;
     onHome: () => void;
+    onReview: () => void;
 }
 
-export const Complete: React.FC<CompleteProps> = ({ onRestart, onHome }) => {
+export const Complete: React.FC<CompleteProps> = ({ onRestart, onHome, onReview }) => {
     useEffect(() => {
         const duration = 3000;
         const end = Date.now() + duration;
@@ -44,6 +45,13 @@ export const Complete: React.FC<CompleteProps> = ({ onRestart, onHome }) => {
             <p className="complete-subtitle">You've mastered this set.</p>
 
             <div className="action-buttons">
+                <button
+                    onClick={onReview}
+                    className="btn-primary"
+                    style={{ backgroundColor: '#8b5cf6' }} // Violet for distinction
+                >
+                    Review (Shuffle)
+                </button>
                 <button
                     onClick={onRestart}
                     className="btn-primary"

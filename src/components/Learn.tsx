@@ -21,7 +21,10 @@ export const Learn: React.FC<LearnProps> = ({ unitData, onExit }) => {
         advanceReinforcement,
         progress,
         totalWords,
-        resetProgress
+        resetProgress,
+        startReview,
+        advanceReview,
+        currentReviewWord
     } = useWordEngine({ unitData });
 
     // Handle Escape to exit
@@ -75,10 +78,19 @@ export const Learn: React.FC<LearnProps> = ({ unitData, onExit }) => {
                     />
                 )}
 
+                {phase === 'review' && currentReviewWord && (
+                    <Reinforcement
+                        key={currentReviewWord.en}
+                        word={currentReviewWord}
+                        onComplete={advanceReview}
+                    />
+                )}
+
                 {phase === 'complete' && (
                     <Complete
                         onRestart={resetProgress}
                         onHome={onExit}
+                        onReview={startReview}
                     />
                 )}
             </div>
