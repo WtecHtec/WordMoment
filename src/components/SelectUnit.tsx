@@ -1,6 +1,6 @@
 import React from 'react';
 import zhData from '../data/zh_data.json';
-// import jaData from '../data/ja_data.json';
+import jaData from '../data/ja_data.json';
 import { useTranslation, type Language } from '../i18n';
 import type { UnitData } from '../data/types';
 
@@ -10,9 +10,9 @@ interface SelectUnitProps {
     setLanguage: (lang: Language) => void;
 }
 
-const WORD_DATA: Record<'zh', UnitData[]> = {
+const WORD_DATA: Record<'zh' | 'ja', UnitData[]> = {
     zh: zhData,
-    // ja: jaData,
+    ja: jaData,
 };
 export const SelectUnit: React.FC<SelectUnitProps> = ({ onSelect, language, setLanguage }) => {
     const t = useTranslation(language);
@@ -44,7 +44,7 @@ export const SelectUnit: React.FC<SelectUnitProps> = ({ onSelect, language, setL
                     >
                         {t.languageZh}
                     </button>
-                    {/* <button
+                     <button
                         onClick={() => setLanguage('ja')}
                         className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${language === 'ja'
                                 ? 'bg-sky-500 text-white'
@@ -52,7 +52,7 @@ export const SelectUnit: React.FC<SelectUnitProps> = ({ onSelect, language, setL
                             }`}
                     >
                         {t.languageJa}
-                    </button> */}
+                    </button> 
                 </div>
                 <h1 className="app-title">
                     {t.title}

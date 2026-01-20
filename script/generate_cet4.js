@@ -13,7 +13,7 @@ try {
     console.error("Failed to load IPA dict:", e);
 }
 
-const INPUT_FILE = path.join(__dirname, '3 四级-乱序.txt');
+const INPUT_FILE = path.join(__dirname, '../3 四级-乱序.txt');
 const OUTPUT_FILE = path.join(__dirname, 'cet4_words_node.json');
 
 const EXCLUDE = new Set([

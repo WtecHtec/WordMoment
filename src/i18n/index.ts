@@ -11,7 +11,7 @@ export const translations = {
         basicVocabulary: '基础词汇',
         moreComingSoon: '更多单元即将推出...',
         languageZh: '中文',
-        languageJa: '日文',
+        languageJa: '日本語',
     },
     ja: {
         title: 'WordMoment',
@@ -22,7 +22,7 @@ export const translations = {
         words: '単語',
         basicVocabulary: '基本語彙',
         moreComingSoon: 'その他のユニットは近日公開予定...',
-        languageZh: '中国語',
+        languageZh: '中文',
         languageJa: '日本語',
     },
 };

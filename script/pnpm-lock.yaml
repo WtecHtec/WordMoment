@@ -1,0 +1,48 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      hyphen:
+        specifier: ^1.13.0
+        version: 1.14.1
+      hyphenation.en-us:
+        specifier: ^0.2.1
+        version: 0.2.1
+      hypher:
+        specifier: ^0.2.5
+        version: 0.2.5
+      text-to-ipa:
+        specifier: ^1.0.0
+        version: 1.0.0
+
+packages:
+
+  hyphen@1.14.1:
+    resolution: {integrity: sha512-kvL8xYl5QMTh+LwohVN72ciOxC0OEV79IPdJSTwEXok9y9QHebXGdFgrED4sWfiax/ODx++CAMk3hMy4XPJPOw==}
+
+  hyphenation.en-us@0.2.1:
+    resolution: {integrity: sha512-ItXYgvIpfN8rfXl/GTBQC7DsSb5PPsKh9gGzViK/iWzCS5mvjDebFJ6xCcIYo8dal+nSp2rUzvTT7BosrKlL8A==}
+
+  hypher@0.2.5:
+    resolution: {integrity: sha512-kUTpuyzBWWDO2VakmjHC/cxesg4lKQP+Fdc+7lrK4yvjNjkV9vm5UTZMDAwOyyHTOpbkYrAMlNZHG61NnE9vYQ==}
+
+  text-to-ipa@1.0.0:
+    resolution: {integrity: sha512-IeUg3FyvuLNMKTxxsu3ZjRRPiMmfrBQb+kUcvq+gu/fbL8Z2obFqYZ8LB96NhMHNsoa9DpCtTp7dKV7TQEpt7Q==}
+
+snapshots:
+
+  hyphen@1.14.1: {}
+
+  hyphenation.en-us@0.2.1:
+    dependencies:
+      hypher: 0.2.5
+
+  hypher@0.2.5: {}
+
+  text-to-ipa@1.0.0: {}

@@ -27,10 +27,24 @@
   <meta name="robots" content="index, follow" />
 
   <!-- ========================= -->
+  <!-- 日文 SEO -->
+  <!-- ========================= -->
+
+  <meta name="description" lang="ja"
+    content="詞刻 WordMoment は、フロントエンドのみで動作する広告なしの英単語学習サイトです。キーボード入力と累積的な反復強化を通じて、効率的に英単語を記憶できます。CET4 / CET6 などの英語語彙記憶に適しています。" />
+
+  <meta name="keywords" lang="ja"
+    content="英単語暗記,単語学習,英語単語暗記,英語単語学習,英単語記憶,英語語彙記憶,英語単語練習,英語語彙訓練,CET4単語暗記,4級単語暗記,CET6単語暗記,入力式単語暗記,能動的想起単語暗記,効率的な単語暗記方法,広告なしの単語暗記サイト,フロントエンドのみの単語暗記ツール" />
+
+  <link rel="alternate" hreflang="ja" href="https://wordmoment.xujingyichang.top/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://wordmoment.xujingyichang.app/" />
+  <link rel="alternate" hreflang="x-default" href="https://wordmoment.xujingyichang.app/" />
+
+  <!-- ========================= -->
   <!-- Canonical -->
   <!-- ========================= -->
 
-  <link rel="canonical" href="https://wordmoment.app/" />
+  <link rel="canonical" href="https://wordmoment.xujingyichang.app/" />
 
   <!-- ========================= -->
   <!-- Open Graph -->
@@ -45,6 +59,13 @@
 
   <meta property="og:url" content="https://wordmoment.app/" />
   <meta property="og:image" content="https://wordmoment.app/og-image.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="ja_JP" />
+
+  <!-- 日文 Open Graph -->
+  <meta property="og:title" lang="ja" content="詞刻 WordMoment｜入力と反復強化で効率的に英単語を暗記" />
+  <meta property="og:description" lang="ja" content="キーボード入力と体系的な反復強化を通じて、英単語を本当に記憶できる単語暗記ツール。" />
+  <meta property="og:site_name" lang="ja" content="詞刻 WordMoment" />
 
   <!-- ========================= -->
   <!-- Twitter Card -->
@@ -56,7 +77,11 @@
 
   <meta name="twitter:description" content="通过主动输入和累积强化，把英语单词真正刻进记忆。" />
 
-  <meta name="twitter:image" content="https://wordmoment.app/og-image.png" />
+  <meta name="twitter:image" content="https://wordmoment.xujingyichang.app/og-image.png" />
+
+  <!-- 日文 Twitter Card -->
+  <meta name="twitter:title" lang="ja" content="詞刻 WordMoment｜入力式英語単語暗記ツール" />
+  <meta name="twitter:description" lang="ja" content="能動的な入力と累積強化により、英単語を本当に記憶に刻み込みます。" />
 
   <!-- ========================= -->
   <!-- PWA / 移动端 -->
@@ -75,12 +100,21 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "词刻 WordMoment",
-  "url": "https://wordmoment.app/",
+  "alternateName": "詞刻 WordMoment",
+  "url": "https://wordmoment.xujingyichang.app/",
   "applicationCategory": "EducationalApplication",
   "operatingSystem": "All",
   "description": "一个通过键盘输入与累积式重复强化，帮助用户高效背单词和记忆英语词汇的纯前端学习工具。",
-  "inLanguage": "zh-CN",
-  "browserRequirements": "Requires JavaScript"
+  "inLanguage": ["zh-CN", "ja"],
+  "browserRequirements": "Requires JavaScript",
+  "translations": [
+    {
+      "@type": "WebApplication",
+      "name": "詞刻 WordMoment",
+      "description": "キーボード入力と累積的な反復強化を通じて、ユーザーが効率的に英単語を暗記し、英語語彙を記憶できるフロントエンドのみの学習ツール。",
+      "inLanguage": "ja"
+    }
+  ]
 }
 </script>
   <style>
@@ -129,6 +163,30 @@
       只专注于帮助你用更少的单词量，获得更牢固的记忆效果。
       如果你正在寻找一个<strong>高效、干净、长期可用的背单词网站</strong>，
       词刻将是一个值得尝试的选择。
+    </p>
+  </section>
+
+  <section class="seo-content" lang="ja" aria-label="英語単語暗記ツール紹介">
+    <h2>入力で英単語を暗記する英語記憶ツール</h2>
+
+    <p>
+      詞刻（WordMoment）は、<strong>英単語暗記</strong>と<strong>英語語彙記憶</strong>に特化したオンラインツールです。
+      キーボード入力と反復強化を通じて、学習者が英単語を本当に記憶できるよう支援します。
+      従来の単語カードや機械的な反復とは異なり、詞刻は<strong>能動的想起</strong>を重視し、
+      すべての新しい単語をユーザー自身が入力することで、記憶の痕跡を深めます。
+    </p>
+
+    <p>
+      学習プロセスでは、新しい単語の入力を完了するたびに、システムは最初の単語から順に
+      学習済み単語の強化表示を再生し、短時間で単語を繰り返し表示します。
+      <strong>CET4 単語暗記</strong>、<strong>CET6 単語暗記</strong>、および日常的な英語語彙の蓄積に適しています。
+    </p>
+
+    <p>
+      詞刻は広告を提供せず、ソーシャル機能もなく、問題を解く速度を追求しません。
+      より少ない単語数で、より強固な記憶効果を得られることに専念しています。
+      <strong>効率的で、クリーンで、長期的に使用できる単語暗記サイト</strong>をお探しなら、
+      詞刻は試す価値のある選択肢です。
     </p>
   </section>
   <div id="root"></div>
